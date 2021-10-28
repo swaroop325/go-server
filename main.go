@@ -18,13 +18,13 @@ func main() {
 	ginEngine := gin.Default()
 	//Creating a Route handler for GET request with anonymous function as handler function
 	ginEngine.GET("/v1", v1)
-	ginEngine.GET("/test", hello)
+	ginEngine.GET("/v2/:id", v2)
 	//Serving the application on port number 8080
 	ginEngine.Run()
 }
-func hello(context *gin.Context) {
-	context.String(http.StatusOK, "Hello World!")
-}
 func v1(context *gin.Context) {
 	context.JSON(http.StatusOK, response)
+}
+func v2(context *gin.Context) {
+	context.JSON(http.StatusOK, gin.H{"statusCode": http.StatusFound, "message": "ID entered is" + context.Param("id")})
 }
