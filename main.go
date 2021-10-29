@@ -22,6 +22,9 @@ func main() {
 	//POST Reqquests
 	ginEngine.POST("/v1", postv1)
 
+	//XML Rendereing
+	ginEngine.GET("/xml", xmlResponse)
+
 	//Serving the application on port number 8080
 	ginEngine.Run()
 }

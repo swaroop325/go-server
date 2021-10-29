@@ -16,3 +16,10 @@ func postv1(context *gin.Context) {
 		context.JSON(http.StatusOK, gin.H{"statusCode": http.StatusOK, "custId": cust.CustId, "custName": "customer id is: " + cust.CustName})
 	}
 }
+
+func xmlResponse(context *gin.Context) {
+	var cust Customer
+	cust.CustId = 123
+	cust.CustName = "Alex"
+	context.XML(http.StatusOK, cust)
+}
