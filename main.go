@@ -4,6 +4,11 @@ import (
 	"api_server/responses"
 
 	"github.com/gin-gonic/gin"
+
+	ginSwagger "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
+	// swagger embed files
+	docs "https://github.com/swaroop325/go-server/docs"
 )
 
 var (
@@ -38,6 +43,11 @@ func main() {
 
 	//YAML response
 	ginEngine.GET("/yaml", otherResponse.YamlResponse)
-	//Serving the application on port number 8080
+
+	//swagger configuration
+	ginEngine.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler,
+		ginSwagger.URL("http://localhost:8080/swagger/doc.json"),
+	))
+	//Serving the application on port number 3000
 	ginEngine.Run()
 }

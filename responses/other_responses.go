@@ -30,3 +30,7 @@ func (otherResponse OtherResponse) YamlResponse(context *gin.Context) {
 	}
 	context.YAML(http.StatusOK, cust1)
 }
+
+// func (otherResponse OtherResponse) DefaultResponse(context *gin.Context) {
+// 	context.JSON(http.StatusNotFound, gin.H{"statusCode": http.StatusNotFound})
+// }
